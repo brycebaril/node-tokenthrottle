@@ -1,0 +1,33 @@
+{
+  "name": "tokenthrottle",
+  "version": "1.0.0",
+  "description": "An asynchronous token-based throttle. E.g. rate-limit API access by token/IP.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap ./test"
+  },
+  "devDependencies": {
+    "tap": "~0.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/brycebaril/node-tokenthrottle.git"
+  },
+  "keywords": [
+    "throttle",
+    "ratelimit"
+  ],
+  "author": {
+    "name": "Bryce Baril",
+    "email": "bryce@ravenwall.com",
+    "url": "http://ravenwall.com"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.8"
+  },
+  "dependencies": {
+    "assert-plus": "~0.1.2",
+    "lru-cache": "~2.3.0"
+  }
+}
