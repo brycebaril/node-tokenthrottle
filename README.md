@@ -1,6 +1,8 @@
 TokenThrottle
 =============
 
+[![NPM](https://nodei.co/npm/tokenthrottle.png)](https://nodei.co/npm/tokenthrottle/)
+
 Asynchronously rate-limit by a key. E.g. set thresholds for access to your API by username/token, or IP address.
 
 The default storage is in process memory, but it is easily pluggable by providing a thin wrapper to whatever storage system you would like to use, e.g. Redis for cross-process or cross-machine rate-limiting.
@@ -23,12 +25,13 @@ var throttle = require("tokenthrottle")({rate: 100});
 
 ```
 
-Install
-=======
+Wrappers
+========
 
-with [npm](http://npmjs.org), do:
+Convenient wrappers for this library with different storage back-ends:
 
-    npm install tokenthrottle
+* Redis: [tokenthrottle-redis](http://npm.im/tokenthrottle-redis)
+* LevelDb: [tokenthrottle-level](http://npm.im/tokenthrottle-level)
 
 Options
 =======
@@ -58,6 +61,8 @@ Custom Token Table
 ==================
 
 Here's an example of a custom token table that would use Redis:
+
+(But don't do it manually, use [tokenthrottle-redis](http://npm.im/tokenthrottle-redis))
 
 ```javascript
 function RedisTable(redisClient) {
