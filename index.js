@@ -65,8 +65,8 @@ Throttle.prototype.rateLimit = function (key, cb) {
   // Check the overrides
   if (self.overrides &&
     self.overrides[key] &&
-    self.overrides[key].burst !== undefined &&
-    self.overrides[key].rate !== undefined) {
+    (self.overrides[key].burst !== undefined ||
+    self.overrides[key].rate !== undefined)) {
 
     burst = self.overrides[key].burst
     rate = self.overrides[key].rate
