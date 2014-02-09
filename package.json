@@ -1,6 +1,6 @@
 {
   "name": "tokenthrottle",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "An asynchronous token-based throttle. E.g. rate-limit API access by token/IP.",
   "main": "index.js",
   "scripts": {
