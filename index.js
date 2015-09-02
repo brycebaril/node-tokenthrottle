@@ -27,7 +27,8 @@ function Throttle(options) {
   this.burst = options.burst || options.rate
   this.rate = options.rate
   this.window = options.window || 1000
-  this.table = table = options.tokensTable || TokenTable({size: options.maxKeys})
+  var table = options.tokensTable || TokenTable({size: options.maxKeys})
+  this.table = table
   this.overrides = options.overrides
 
   this.getter = table.get
@@ -74,7 +75,7 @@ Throttle.prototype.rateLimit = function (key, cb) {
 
   if (!rate || !burst) return cb()
 
-  self.getter.call(table, key, function (err, bucket) {
+  self.getter.call(self.table, key, function (err, bucket) {
     if (err) {
       return cb(new Error("Unable to check token table" + err))
     }
@@ -96,7 +97,7 @@ Throttle.prototype.rateLimit = function (key, cb) {
 
     //console.log("Throttle(%s): num_tokens= %d -- throttled: %s", key, bucket.tokens, !hasCapacity)
 
-    self.putter.call(table, key, bucket, function (err) {
+    self.putter.call(self.table, key, bucket, function (err) {
       // Error here is not fatal -- we were able to determine throttle status, just not save state.
       if (err) {
         err = new Error("Error saving throttle information to table" + err)
