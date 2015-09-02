@@ -1,4 +1,4 @@
-var test = require("tap").test
+var test = require("tape")
 
 var Throttle = require("../")
 var TokenBucket = require("../token_bucket")

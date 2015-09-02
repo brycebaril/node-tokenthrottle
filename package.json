@@ -4,10 +4,10 @@
   "description": "An asynchronous token-based throttle. E.g. rate-limit API access by token/IP.",
   "main": "index.js",
   "scripts": {
-    "test": "tap ./test"
+    "test": "node test/"
   },
   "devDependencies": {
-    "tap": "~0.4.8"
+    "tape": "~4.2.0"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "assert-plus": "~0.1.5",
-    "lru-cache": "~2.5.0"
+    "lru-cache": "~2.6.5"
   }
 }
