@@ -7,7 +7,7 @@
     "test": "node test/"
   },
   "devDependencies": {
-    "tape": "~4.2.0"
+    "tape": "~4.4.0"
   },
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
     "node": ">=0.8"
   },
   "dependencies": {
-    "assert-plus": "~0.1.5",
-    "lru-cache": "~2.6.5"
+    "assert-plus": "~1.0.0",
+    "lru-cache": "~4.0.0"
   }
 }
