@@ -128,6 +128,40 @@ test("Override rate only", function (t) {
   }, 50)
 })
 
+test("Override window", function (t) {
+  t.plan(10)
+
+  var throttle = Throttle({
+    rate: 1,
+    burst: 3,
+    overrides: {
+      test: {rate: 1, burst: 3, window: 100}
+    }
+  })
+  var i = 0
+  while (i++ < 3) {
+    // This is so much cleaner with setImmediate... *sigh 0.8.x*
+    setTimeout(function () {
+      throttle.rateLimit("test", function (err, limited) {
+        t.notOk(err)
+        t.notOk(limited, "Not throttled yet")
+      })
+    }, i * 10)
+  }
+  setTimeout(function () {
+    throttle.rateLimit("test", function (err, limited) {
+      t.notOk(err)
+      t.ok(limited, "Should now be throttled.")
+    })
+  }, 50)
+  setTimeout(function () {
+    throttle.rateLimit("test", function (err, limited) {
+      t.notOk(err)
+      t.notOk(limited, "Throttle should be lifted.")
+    })
+  }, 150)
+})
+
 test("Different throttle window", function (t) {
   t.plan(10)
 
