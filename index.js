@@ -62,7 +62,7 @@ Throttle.prototype.rateLimit = function (key, cb) {
 
   var burst = self.burst
   var rate = self.rate
-  var window = self.window
+  var wnd = self.window
 
   // Check the overrides
   if (self.overrides &&
@@ -73,7 +73,7 @@ Throttle.prototype.rateLimit = function (key, cb) {
 
     burst = self.overrides[key].burst
     rate = self.overrides[key].rate
-    window = self.overrides[key].window
+    wnd = self.overrides[key].window
   }
 
   if (!rate || !burst) return cb()
@@ -91,10 +91,9 @@ Throttle.prototype.rateLimit = function (key, cb) {
       bucket = TokenBucket({
         capacity: burst,
         fillRate: rate,
-        window: window,
+        window: wnd,
       })
     }
-
 
     var hasCapacity = bucket.consume(1)
 
